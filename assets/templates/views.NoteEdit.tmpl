@@ -1,0 +1,7 @@
+<form method="POST" action="/{{ .ID }}">
+    {{ .CSRF }}
+    <input type="hidden" name="_method" value="PUT">
+    <input id="body" type="hidden" name="Body" value="{{ .Body }}">
+    <trix-editor input="body"></trix-editor>
+    <input type="submit">
+</form>

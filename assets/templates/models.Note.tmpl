@@ -1,0 +1,11 @@
+<article>
+    <header>
+
+    </header>
+    <section>
+    {{raw .Body }}
+    </section>
+    <footer>
+        <p><a href="/{{ .ID }}/edit">Edit</a> | <time datetime="{{ rfc3339 .CreatedAt }}">{{ datetime .CreatedAt }}</time></p>
+    </footer>
+</article>

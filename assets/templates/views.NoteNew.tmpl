@@ -1,0 +1,6 @@
+<form method="POST" action="/">
+    {{ .CSRF }}
+    <input id="body" type="hidden" name="Body" value="<h1>New Note</h1>">
+    <trix-editor input="body"></trix-editor>
+    <input type="submit">
+</form>

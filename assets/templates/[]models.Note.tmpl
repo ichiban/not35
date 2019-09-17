@@ -1,0 +1,12 @@
+{{ range . }}
+<article>
+    <header>
+    </header>
+    <section>
+        {{ .Snippet 140 | raw }}
+    </section>
+    <footer>
+         <p><a href="/{{ .ID }}">Read More</a> | <time datetime="{{ rfc3339 .CreatedAt }}">{{ datetime .CreatedAt }}</time></p>
+    </footer>
+</article>
+{{ end }}

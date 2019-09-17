@@ -1,0 +1,10 @@
+{{ range .Flashes }}
+    <p>{{ . }}</p>
+{{ end }}
+
+<form method="POST" action="/sessions">
+    {{ .CSRF }}
+    <input type="email" name="Email">
+    <input type="password" name="Password">
+    <input type="submit">
+</form>
