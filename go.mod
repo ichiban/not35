@@ -10,9 +10,6 @@ require (
 	github.com/gorilla/csrf v1.6.1
 	github.com/gorilla/sessions v1.2.0
 	github.com/ichiban/assets v0.0.0-20181130073859-0633e2415c78
-	github.com/ichiban/di v0.0.0-20190915013520-20ef99f5c99d
-	github.com/ichiban/linesqueak v0.2.0
-	github.com/ichiban/render v0.0.0-20190911144543-fe8d754d3ada
 	github.com/jmoiron/sqlx v1.2.0
 	github.com/kr/pretty v0.1.0 // indirect
 	github.com/lib/pq v1.2.0

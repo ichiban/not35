@@ -1,11 +1,11 @@
-package handlers
+package main
 
 import (
 	"net/http"
 	"strings"
 )
 
-func Override(next http.Handler) http.Handler {
+func override(next http.Handler) http.Handler {
 	return http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
 		if r.Method == http.MethodPost {
 			if m := r.FormValue("_method"); m != "" {

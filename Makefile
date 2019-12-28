@@ -25,4 +25,4 @@ clean:
 	rm -f $(MANIFEST)
 
 run: $(MANIFEST)
-	BIND=:8080 DATABASE=postgres://localhost/not35?sslmode=disable SECRET=a454e9cf19a517fcbe4c8f0650f8335c go run main.go
+	BIND=:8080 DATABASE=postgres://localhost/not35?sslmode=disable SECRET=a454e9cf19a517fcbe4c8f0650f8335c go run ./...

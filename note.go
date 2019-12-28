@@ -1,17 +1,16 @@
-package models
+package main
 
 import (
-	"context"
+	"html/template"
 	"strings"
 	"time"
-
-	"github.com/jmoiron/sqlx"
 
 	"golang.org/x/net/html"
 )
 
 type Note struct {
 	ID        int       `db:"id"`
+	Slug      string    `db:"slug"`
 	Body      string    `db:"body"`
 	CreatedAt time.Time `db:"created_at"`
 	UpdatedAt time.Time `db:"updated_at"`
@@ -67,27 +66,12 @@ func truncateHTML(n *html.Node, l int) int {
 	return l
 }
 
-type NoteRepository struct {
-	db *sqlx.DB
+type NewNote struct {
+	Note
+	CSRF template.HTML
 }
 
-func NewNoteRepository(db *sqlx.DB) *NoteRepository {
-	return &NoteRepository{
-		db: db,
-	}
-}
-
-func (r *NoteRepository) Find(ctx context.Context, n *Note, id int) error {
-	return r.db.GetContext(ctx, n, "SELECT * FROM notes WHERE id = $1", id)
-}
-
-func (r *NoteRepository) FindAll(ctx context.Context, ns *[]Note) error {
-	return r.db.SelectContext(ctx, ns, "SELECT * FROM notes ORDER BY id DESC")
-}
-
-func (r *NoteRepository) Add(ctx context.Context, n *Note) error {
-	if n.ID == 0 {
-		return r.db.GetContext(ctx, n, "INSERT INTO notes (body) VALUES ($1) RETURNING *", n.Body)
-	}
-	return r.db.GetContext(ctx, n, "UPDATE notes SET body = $1, updated_at = current_timestamp WHERE id = $2 RETURNING *", n.Body, n.ID)
+type EditNote struct {
+	Note
+	CSRF template.HTML
 }
